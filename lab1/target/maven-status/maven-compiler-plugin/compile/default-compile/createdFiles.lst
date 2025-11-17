@@ -1,8 +1,0 @@
-servlets/CheckAreaServlet.class
-util/Validate.class
-model/Point.class
-model/Result.class
-util/SessionStorage.class
-servlets/ControllerServlet.class
-servlets/ClearResultsServlet.class
-servlets/GetResultsServlet.class
