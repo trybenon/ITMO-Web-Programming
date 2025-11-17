@@ -1,0 +1,288 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f0f0f0;
+}
+
+.header {
+    min-width: 400px;
+    font-family: fantasy;
+    color: #1a531b;
+    font-size: 18px;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.header h2, .header h3 {
+    margin: 5px 0;
+}
+
+.form-block {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    min-width: 400px;
+}
+
+.graph {
+    flex: 1;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+form {
+    flex: 1;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#xForm, #yForm, #rForm {
+    margin-bottom: 15px;
+}
+
+input[type="button"] {
+    width: 50px;
+    text-align: center;
+    background-color: #2e7d32;
+    color: #ffffff;
+    padding: 5px;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+#clearTableButton {
+    background: #2e7d32;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 150px;
+}
+
+svg {
+    cursor: pointer;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+    accent-color: #2e7d32;
+}
+
+input[type="submit"] {
+    background: #2e7d32;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background: #1b5e20;
+}
+
+#resultTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #ffffff;
+}
+
+#resultTable th, #resultTable td {
+    padding: 10px;
+    border: 1px solid #cccccc;
+    text-align: center;
+}
+
+#resultTable th {
+    background: #1a531b;
+    color: #ffffff;
+}
+
+#resultTable tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+#resultTable tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+#resultTable tr:hover {
+    background-color: #e9ecef;
+}
+
+.error-message {
+    color: #d32f2f;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.header {
+    min-width: unset;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.point {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.hit {
+    background-color: #4caf50;
+    box-shadow: 0 0 5px #4caf50;
+}
+
+.miss {
+    background-color: #f44336;
+    box-shadow: 0 0 5px #f44336;
+}
+
+#pointsContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* СТИЛИ ПАГИНАЦИИ */
+#paginationControls {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#paginationControls button {
+    padding: 8px 16px;
+    margin: 0 5px;
+    border: 1px solid #2e7d32;
+    background-color: #ffffff;
+    color: #2e7d32;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+#paginationControls button:hover:not(:disabled) {
+    background-color: #2e7d32;
+    color: #ffffff;
+}
+
+#paginationControls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#paginationControls span {
+    font-size: 14px;
+    font-weight: bold;
+    color: #1a531b;
+}
+
+/* Основная подсветка блоков */
+.header, .graph, form {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px #0000001a,
+    0 0 0 1px #2e7d320d;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.header:hover, .graph:hover, form:hover {
+    box-shadow: 0 8px 30px #2e7d3226,
+    0 0 0 1px #2e7d3233;
+    transform: translateY(-3px);
+}
+
+/* Акцентная подсветка для формы при взаимодействии */
+form:focus-within {
+    box-shadow: 0 8px 35px #2e7d3233,
+    0 0 0 2px #2e7d324d;
+}
+
+/* Подсветка полей ввода */
+input[type="text"]:focus {
+    border-color: #2e7d32;
+    box-shadow: 0 0 0 2px #2e7d3233;
+    outline: none;
+}
+
+/* Подсветка кнопок при наведении */
+input[type="button"]:hover, #clearTableButton:hover {
+    background: #1b5e20;
+    box-shadow: 0 0 10px #2e7d32b3,
+    0 0 20px #2e7d3280,
+    0 0 30px #2e7d324d;
+    transform: translateY(-1px);
+}
+input[type="submit"]:hover, #clearTableButton:hover {
+    background: #1b5e20;
+    box-shadow: 0 0 10px #2e7d32b3,
+    0 0 20px #2e7d3280,
+    0 0 30px #005108;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+    header {
+        width: 100%;
+    }
+
+    body {
+        margin: 10px;
+    }
+
+    .form-block {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .graph, form {
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    svg {
+        width: 100%;
+        height: auto;
+    }
+
+    #resultTable {
+        font-size: 14px;
+    }
+
+    #resultTable th, #resultTable td {
+        padding: 8px 5px;
+    }
+}
