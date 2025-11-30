@@ -1,16 +1,69 @@
-* {
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5; /* Светло-серый фон */
     margin: 0;
-    padding: 0
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
 }
 
-.main-site-body {
-    margin-left: 50px
+
+.header {
+    background-color: white;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    border-left: 5px solid #cc0000; /* Красная полоска в стиле СССР */
 }
 
-.list-item {
-    padding: 20px 0
+.header h2, .header h3 {
+    margin: 5px 0;
+    color: #333;
 }
 
-canvas {
-    display: block;
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 20px; /* Отступ между часами и кнопкой */
+}
+
+
+#clock {
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    background-color: transparent;
+}
+
+
+.mybutton {
+    background-color: #cc0000;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.mybutton:hover {
+    background-color: #a30000;
+}
+
+.mybutton:active {
+    transform: scale(0.98);
 }

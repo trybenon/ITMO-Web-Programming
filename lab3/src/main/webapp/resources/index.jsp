@@ -1,7 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="util.SessionStorage" %>
-<%@ page import="model.Result" %>
-<%@ page import="java.util.List" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

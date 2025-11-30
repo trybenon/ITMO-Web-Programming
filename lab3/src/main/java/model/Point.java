@@ -4,13 +4,14 @@ import lombok.*;
 
 @NoArgsConstructor
 @Getter
-public class PointBean {
+@Setter
+public class Point {
     private double x;
     private double y;
     private double r;
 
 
-    public PointBean(double x, double y, double r) {
+    public Point(double x, double y, double r) {
         this.x = x;
         this.y = y;
         this.r = r;
@@ -19,7 +20,6 @@ public class PointBean {
 
 
     public boolean hit() {
-
         // 1-я четверть (x >= 0, y >= 0) - прямоугольник
         if (x >= 0 && y >= 0) {
             return (x <= r / 2) && (y <= r);

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputStylesheet library="css" name="style.css"/>
+            <title>lab3|main</title>
+</h:head>
+<h:body>
+    <h:form id="valForm" method="GET" action="send_coord">
+        <div id="xForm">
+            <label>Выберите X:</label>
+            <h:selectOneMenu id="x" value="#{ResultBean.x}">
+                <f:selectItem itemValue="-2.0" itemLabel="-2.0"/>
+                <f:selectItem itemValue="-1.5" itemLabel="-1.5"/>
+                <f:selectItem itemValue="-1.0" itemLabel="-1.0"/>
+                <f:selectItem itemValue="-0.5" itemLabel="-0.5"/>
+                <f:selectItem itemValue="0.0" itemLabel="0.0"/>
+                <f:selectItem itemValue="0.5" itemLabel="0.5"/>
+                <f:selectItem itemValue="1.0" itemLabel="1.0"/>
+                <f:selectItem itemValue="1.5" itemLabel="1.5"/>
+                <f:selectItem itemValue="2.0" itemLabel="2.0"/>
+            </h:selectOneMenu>
+        </div>
+        <div id="yForm">
+            <h:inputText id="y" value="#{ResultBean.y}" placeholder="Введите значение от -2 до 2"/>
+        </div>
+
+    </h:form>
+</h:body>
+
+</html>

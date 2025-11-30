@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 20px;
     background-color: #f0f0f0;
 }
@@ -45,9 +45,8 @@ form {
 }
 
 input[type="button"] {
-    width: 50px;
     text-align: center;
-    background-color: #2e7d32;
+    background-color: #dd4747;
     color: #ffffff;
     padding: 5px;
     border-radius: 3px;
@@ -272,6 +271,7 @@ input[type="submit"]:hover, #clearTableButton:hover {
     width: 60%;
     margin: 0 auto 20px auto;
 }
+
 
 @media (max-width: 768px) {
     header {
