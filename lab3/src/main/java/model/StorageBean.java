@@ -1,5 +1,6 @@
 package model;
 
+import com.google.gson.Gson;
 import jakarta.annotation.ManagedBean;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
@@ -34,6 +35,31 @@ public class StorageBean implements Serializable {
 public void addResult(Result res){
     service.save(res);
     results.add(0, res);
-}
 
-}
+    }
+
+        public String getJsonResults() {
+
+
+
+            StringBuilder sb = new StringBuilder("[");
+
+            for (int i = 0; i < results.size(); i++) {
+                Result r = results.get(i);
+
+
+                sb.append(String.format(java.util.Locale.US,
+                        "{\"x\":%.4f, \"y\":%.4f, \"r\":%.4f, \"success\":%b}",
+                        r.getX(), r.getY(), r.getR(), r.isSuccess()));
+
+
+                if (i < results.size() - 1) {
+                    sb.append(",");
+                }
+            }
+
+            sb.append("]");
+            return sb.toString();
+        }
+    }
+
