@@ -11,7 +11,7 @@
     </managed-bean>
     <managed-bean>
         <managed-bean-name>ResultBean</managed-bean-name>
-        <managed-bean-class>model.ResultBean</managed-bean-class>
+        <managed-bean-class>model.AttemptBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
 
     </managed-bean>

@@ -2,7 +2,7 @@ const canvas = document.getElementById("clock");
 const ctx = canvas.getContext("2d");
 let radius = canvas.height / 2;
 
-// Обновление раз в 11 секунд по заданию
+
 const TIMEOUT = 11000;
 
 ctx.translate(radius, radius);
@@ -62,12 +62,12 @@ function drawBranding(ctx, radius) {
     ctx.textBaseline = "middle";
     ctx.fillText("СССР", 0, -radius * 0.15);
 
-    // Надпись внизу "СДЕЛАНО В СССР" или "ЗАКАЗ МО СССР"
+    // Нижние надписи
     ctx.font = "bold " + (radius * 0.04) + "px sans-serif";
     ctx.fillStyle = '#333';
     ctx.fillText("ЗАКАЗ МО СССР", 0, radius * 0.55);
 
-    // Логотип "Камней" (например 17 jewels)
+    // Логотип "Камней"
     ctx.font = "italic " + (radius * 0.05) + "px serif";
     ctx.fillText("17 КАМНЕЙ", 0, radius * 0.45);
 }
@@ -96,7 +96,7 @@ function drawTicks(ctx, radius) {
 function drawNumbers(ctx, radius) {
     let ang;
     let num;
-    // Крупный шрифт с засечками
+
     ctx.font = "bold " + (radius * 0.18) + "px 'Georgia', 'Times New Roman', serif";
     ctx.textBaseline = "middle";
     ctx.textAlign = "center";
@@ -120,50 +120,49 @@ function drawTime(ctx, radius) {
     let minute = now.getMinutes();
     let second = now.getSeconds();
 
-    // hour
+
     hour = hour % 12;
     hour = (hour * Math.PI / 6) +
         (minute * Math.PI / (6 * 60)) +
         (second * Math.PI / (360 * 60));
     drawSwordHand(ctx, hour, radius * 0.5, radius * 0.06, 'black');
 
-    // minute
     minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60));
     drawSwordHand(ctx, minute, radius * 0.8, radius * 0.05, 'black');
 
-    // second - тонкая красная стрелка с кружочком
+
     second = (second * Math.PI / 30);
     drawSecondHand(ctx, second, radius * 0.9);
 }
 
-// Рисует "Мечевидную" стрелку (Sword hand)
+// минутная и часовая
 function drawSwordHand(ctx, pos, length, width, color) {
     ctx.save();
     ctx.beginPath();
     ctx.rotate(pos);
 
-    // Рисуем форму меча
+
     ctx.moveTo(0, 0);
-    ctx.lineTo(-width/2, -length * 0.2); // Расширение у основания
-    ctx.lineTo(0, -length);              // Острие
-    ctx.lineTo(width/2, -length * 0.2);  // Расширение с другой стороны
+    ctx.lineTo(-width/2, -length * 0.2);
+    ctx.lineTo(0, -length);
+    ctx.lineTo(width/2, -length * 0.2);
     ctx.lineTo(0, 0);
 
     ctx.fillStyle = color;
     ctx.fill();
 
-    // Добавляем полоску люминофора (светящаяся краска) внутри
+    // люминофор
     ctx.beginPath();
     ctx.moveTo(0, -length * 0.25);
     ctx.lineTo(0, -length * 0.70);
     ctx.lineWidth = width * 0.3;
-    ctx.strokeStyle = '#ccffcc'; // Светло-зеленый
+    ctx.strokeStyle = '#ccffcc';
     ctx.stroke();
 
     ctx.restore();
 }
 
-// Особая секундная стрелка
+// секундная стрелка
 function drawSecondHand(ctx, pos, length) {
     ctx.save();
     ctx.rotate(pos);
@@ -171,12 +170,12 @@ function drawSecondHand(ctx, pos, length) {
     ctx.lineWidth = 2;
     ctx.strokeStyle = '#cc0000'; // Красный
 
-    // Длинная часть
+    // стрелка
     ctx.moveTo(0, length * 0.2); // Противовес
     ctx.lineTo(0, -length);
     ctx.stroke();
 
-    // Кружочек на секундной стрелке (характерно для Востока)
+    // кружок
     ctx.beginPath();
     ctx.arc(0, -length * 0.65, 4, 0, 2 * Math.PI);
     ctx.fillStyle = '#cc0000';
@@ -185,7 +184,7 @@ function drawSecondHand(ctx, pos, length) {
     ctx.restore();
 }
 
-// Декоративный болтик в центре
+// болтик
 function drawCenterNut(ctx, radius) {
     ctx.beginPath();
     ctx.arc(0, 0, radius * 0.04, 0, 2 * Math.PI);
@@ -196,7 +195,7 @@ function drawCenterNut(ctx, radius) {
     ctx.stroke();
 }
 
-// Вспомогательная функция для рисования Звезды
+// звезда
 function drawStar(ctx, cx, cy, spikes, outerRadius, innerRadius, color) {
     let rot = Math.PI / 2 * 3;
     let x = cx;

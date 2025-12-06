@@ -1,7 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="util.SessionStorage" %>
-<%@ page import="model.Result" %>
-<%@ page import="java.util.List" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,5 +132,5 @@
     </table>
 </main>
 </body>
-<script src="${pageContext.request.contextPath}/resources/script.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
 </html>

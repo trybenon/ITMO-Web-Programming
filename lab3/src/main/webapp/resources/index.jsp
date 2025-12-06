@@ -132,5 +132,5 @@
     </table>
 </main>
 </body>
-<script src="${pageContext.request.contextPath}/resources/script.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
 </html>
