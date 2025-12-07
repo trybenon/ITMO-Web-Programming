@@ -20,4 +20,8 @@ public class StorageService implements Serializable {
     public List<Result> getAll(){
         return em.createQuery("select res from Result res", Result.class).getResultList();
     }
+
+    public void cleanAll(){
+          em.createNativeQuery("TRUNCATE TABLE results RESTART IDENTITY").executeUpdate();;
+    }
 }

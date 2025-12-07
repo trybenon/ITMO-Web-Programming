@@ -20,11 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-const CANVAS_WIDTH = 300;
-const CANVAS_HEIGHT = 300;
-const CENTER_X = CANVAS_WIDTH / 2;
-const CENTER_Y = CANVAS_HEIGHT / 2;
-const SCALE = 100;
+let CANVAS_WIDTH = 450;
+let CANVAS_HEIGHT = 450;
+let CENTER_X = CANVAS_WIDTH / 2;
+let CENTER_Y = CANVAS_HEIGHT / 2;
+let SCALE = CANVAS_WIDTH / 3;
+
+
 
 function redrawGraph() {
     const canvas = document.getElementById('graphCanvas');
@@ -39,7 +41,9 @@ function redrawGraph() {
     let rLabel = drawR ? drawR : "R";
     let halfRLabel = drawR ? (drawR / 2) : "R/2";
 
-    ctx.fillStyle = '#4A90E2';
+    ctx.fillStyle = '#014c09';
+    ctx.globalAlpha = 0.5;
+
 
     ctx.beginPath();
     ctx.fillRect(CENTER_X, CENTER_Y - SCALE / 2, SCALE, SCALE / 2);
@@ -111,10 +115,27 @@ function drawTick(ctx, x, y, label) {
 function handleCanvasClick(event) {
     const rVal = getRValue();
 
+
     if (!validateR(rVal)) {
-        alert("Пожалуйста, выберите корректное значение R (1 ... 4)!");
+        console.warn("R не выбран. Отправляем запрос для генерации ошибки JSF.");
+
+
+        const hiddenR = document.getElementById('valForm:hiddenR');
+        const hiddenX = document.getElementById('valForm:hiddenX');
+        const hiddenY = document.getElementById('valForm:hiddenY');
+
+
+        if (hiddenR) hiddenR.value = "";
+        if (hiddenX) hiddenX.value = "0";
+        if (hiddenY) hiddenY.value = "0";
+
+
+        if (window.sendClickParams) {
+            sendClickParams();
+        }
         return;
     }
+
 
     const canvas = document.getElementById('graphCanvas');
     const rect = canvas.getBoundingClientRect();
@@ -177,10 +198,11 @@ function sendCoordinates(x, y, r) {
 
 function drawAllPoints(ctx, currentR) {
     const hiddenInput = document.getElementById('valForm:pointsData');
-    if (!hiddenInput || !hiddenInput.value) return;
+    if (!hiddenInput || !hiddenInput.textContent || hiddenInput.textContent == '[]') return;
 
     try {
-        const pointsArray = JSON.parse(hiddenInput.value);
+        const pointsArray = JSON.parse(hiddenInput.textContent);
+        console.log(pointsArray)
 
         pointsArray.forEach(point => {
             const xPixel = CENTER_X + (point.x / currentR * SCALE);
@@ -189,7 +211,7 @@ function drawAllPoints(ctx, currentR) {
             ctx.beginPath();
             ctx.arc(xPixel, yPixel, 4, 0, 2 * Math.PI);
 
-            ctx.fillStyle = point.success ? "#00ff00" : "#ff0000";
+            ctx.fillStyle = point.success ? "#00ff00" : "#910000";
             ctx.fill();
 
             ctx.strokeStyle = "black";

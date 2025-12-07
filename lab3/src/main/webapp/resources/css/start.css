@@ -9,8 +9,25 @@ body {
     min-height: 100vh;
 }
 
+.ui-button.main-btn {
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    transition: 0.3s;
+    margin-top: 20px;
+    display: flex;
+    background-color: #ba0000;
+}
+.ui-button.main-btn:hover {
+    background-color: #d32f2f;
+    box-shadow: 0 0 10px #f44336b3,
+    0 0 20px #f4433680,
+    0 0 30px #f443364d;
+    transform: translateY(-1px);
+}
 
-.header {
+header {
     background-color: white;
     width: 100%;
     max-width: 600px;
@@ -22,7 +39,7 @@ body {
     border-left: 5px solid #cc0000;
 }
 
-.header h2, .header h3 {
+header h2, header h3 {
     margin: 5px 0;
     color: #333;
 }
@@ -46,24 +63,5 @@ body {
 }
 
 
-.mybutton {
-    background-color: #cc0000;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 12px 30px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
 
-.mybutton:hover {
-    background-color: #a30000;
-}
 
-.mybutton:active {
-    transform: scale(0.98);
-}

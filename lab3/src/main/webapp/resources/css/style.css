@@ -1,10 +1,15 @@
-body {
+
+.main-container {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 20px;
-    background-color: #f0f0f0;
+    margin: 10px;
+    background: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 480px;
+    gap: 10px;
 }
 
-.header {
+header {
     min-width: 400px;
     font-family: fantasy;
     color: #1a531b;
@@ -13,92 +18,96 @@ body {
     padding: 15px;
     border-radius: 5px;
     margin-bottom: 20px;
+    margin: 10px;
 }
 
-.header h2, .header h3 {
+header h2, header h3 {
     margin: 5px 0;
-}
-
-.form-block {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    min-width: 400px;
 }
 
 .graph {
     flex: 1;
     background: #ffffff;
     padding: 15px;
-    border-radius: 5px;
+    border-radius: 15px;
+    min-width: 480px
 }
 
 form {
     flex: 1;
     background: #ffffff;
     padding: 20px;
+    border-radius: 15px;
+}
+
+
+.graph, form, header {
+    background: #ffffff;
     border-radius: 10px;
-}
-
-#xForm, #yForm, #rForm {
-    margin-bottom: 15px;
-}
-
-input[type="button"] {
-    text-align: center;
-    background-color: #dd4747;
-    color: #ffffff;
-    padding: 5px;
-    border-radius: 3px;
-    border: none;
-    cursor: pointer;
-    margin-top: 2px;
-}
-
-#clearTableButton {
-    background: #2e7d32;
-    color: #ffffff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    width: 150px;
-}
-
-svg {
-    cursor: pointer;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input[type="text"] {
-    width: 90%;
-    padding: 8px;
-    border: 1px solid #cccccc;
-    border-radius: 3px;
-}
-
-input[type="radio"] {
-    margin-right: 5px;
-    accent-color: #2e7d32;
-}
-
-input[type="submit"] {
-    background: #2e7d32;
-    color: #ffffff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
+    box-shadow: 0 2px 15px #0000001a,
+    0 0 0 1px #2e7d320d;
     transition: all 0.3s ease;
+    position: relative;
 }
 
-input[type="submit"]:hover {
-    background: #1b5e20;
+.header:hover, .graph:hover, form:hover {
+    box-shadow: 0 8px 30px #2e7d3226,
+    0 0 0 1px #2e7d3233;
+    transform: translateY(-3px);
 }
+
+
+.ui-button.submit-btn,
+.ui-button.go-to-start-btn,
+.ui-button.clear-btn {
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    transition: 0.3s;
+    margin-top: 20px;
+    display: flex;
+}
+
+
+.ui-button.submit-btn {
+    background-color: #2e7d32;
+}
+
+.ui-button.go-to-start-btn {
+    background-color: #2e7d32;
+    margin-top: 90px;
+}
+
+.ui-button.clear-btn {
+    background-color: #ba0000;
+    min-width: 202px
+}
+
+.ui-button.submit-btn:hover {
+    background-color: #1b5e20;
+    box-shadow: 0 0 10px #2e7d32b3,
+    0 0 20px #2e7d3280,
+    0 0 30px #2e7d324d;
+    transform: translateY(-1px);
+}
+
+.ui-button.go-to-start-btn:hover {
+    background-color: #388e3c;
+    box-shadow: 0 0 10px #4caf50b3,
+    0 0 20px #4caf5080,
+    0 0 30px #4caf504d;
+    transform: translateY(-1px);
+}
+
+.ui-button.clear-btn:hover {
+    background-color: #d32f2f;
+    box-shadow: 0 0 10px #f44336b3,
+    0 0 20px #f4433680,
+    0 0 30px #f443364d;
+    transform: translateY(-1px);
+}
+
 
 #resultTable {
     width: 100%;
@@ -130,83 +139,25 @@ input[type="submit"]:hover {
     background-color: #e9ecef;
 }
 
-.error-message {
-    color: #d32f2f;
-    font-size: 12px;
-    margin-top: 5px;
-}
-
-.header {
-    min-width: unset;
-    font-size: 16px;
-    padding: 10px;
-}
-
-.point {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    pointer-events: none;
-}
-
-.hit {
-    background-color: #4caf50;
-    box-shadow: 0 0 5px #4caf50;
-}
-
-.miss {
-    background-color: #f44336;
-    box-shadow: 0 0 5px #f44336;
-}
-
-#pointsContainer {
-    position: absolute;
-    top: 0;
-    left: 0;
+#xForm, #yForm, #rForm {
     width: 100%;
-    height: 100%;
-    pointer-events: none;
+    margin-bottom:30px;
 }
 
-/* СТИЛИ ПАГИНАЦИИ */
-#paginationControls {
-    text-align: center;
-    margin: 20px 0;
+
+#xForm .ui-selectonemenu,
+#xForm .ui-selectonemenu-label,
+#yForm .ui-inputtext,
+#rForm .ui-spinner,
+#rForm .ui-spinner-input {
+    width: 100% !important;
+    box-sizing: border-box;
 }
 
-#paginationControls button {
-    padding: 8px 16px;
-    margin: 0 5px;
-    border: 1px solid #2e7d32;
-    background-color: #ffffff;
-    color: #2e7d32;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 14px;
-    transition: all 0.3s ease;
-}
 
-#paginationControls button:hover:not(:disabled) {
-    background-color: #2e7d32;
-    color: #ffffff;
-}
 
-#paginationControls button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
 
-#paginationControls span {
-    font-size: 14px;
-    font-weight: bold;
-    color: #1a531b;
-}
-
-/* Основная подсветка блоков */
-.header, .graph, form {
+.graph, form, header {
     background: #ffffff;
     border-radius: 10px;
     box-shadow: 0 2px 15px #0000001a,
@@ -221,62 +172,15 @@ input[type="submit"]:hover {
     transform: translateY(-3px);
 }
 
-/* Акцентная подсветка для формы при взаимодействии */
+
 form:focus-within {
     box-shadow: 0 8px 35px #2e7d3233,
     0 0 0 2px #2e7d324d;
 }
 
-/* Подсветка полей ввода */
-input[type="text"]:focus {
-    border-color: #2e7d32;
-    box-shadow: 0 0 0 2px #2e7d3233;
-    outline: none;
-}
-
-/* Подсветка кнопок при наведении */
-input[type="button"]:hover, #clearTableButton:hover {
-    background: #1b5e20;
-    box-shadow: 0 0 10px #2e7d32b3,
-    0 0 20px #2e7d3280,
-    0 0 30px #2e7d324d;
-    transform: translateY(-1px);
-}
-input[type="submit"]:hover, #clearTableButton:hover {
-    background: #1b5e20;
-    box-shadow: 0 0 10px #2e7d32b3,
-    0 0 20px #2e7d3280,
-    0 0 30px #005108;
-    transform: translateY(-1px);
-}
-.graph h3 {
-    color: #1a531b;
-    margin-bottom: 10px;
-}
-
-.no-results {
-    text-align: center;
-    color: #555;
-    font-style: italic;
-    margin: 20px 0;
-}
-
-#backForm {
-    text-align: center;
-    margin-top: 20px;
-}
-
-
-.current-result table {
-    width: 60%;
-    margin: 0 auto 20px auto;
-}
-
 
 @media (max-width: 768px) {
-    header {
-        width: 100%;
-    }
+
 
     body {
         margin: 10px;
@@ -295,7 +199,7 @@ input[type="submit"]:hover, #clearTableButton:hover {
         box-sizing: border-box;
     }
 
-    svg {
+    canvas {
         width: 100%;
         height: auto;
     }

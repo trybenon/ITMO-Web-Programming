@@ -79,7 +79,7 @@ function drawTicks(ctx, radius) {
         ctx.beginPath();
         ctx.rotate(ang);
 
-        // Жирные черные риски, как на "Командирских"
+        // Жирные черные риски
         if (num % 5 === 0) {
             ctx.rect(-radius*0.02, -radius*0.9, radius*0.04, radius*0.12);
             ctx.fillStyle = '#000';
@@ -168,7 +168,7 @@ function drawSecondHand(ctx, pos, length) {
     ctx.rotate(pos);
     ctx.beginPath();
     ctx.lineWidth = 2;
-    ctx.strokeStyle = '#cc0000'; // Красный
+    ctx.strokeStyle = '#cc0000';
 
     // стрелка
     ctx.moveTo(0, length * 0.2); // Противовес

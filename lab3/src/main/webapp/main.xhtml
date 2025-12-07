@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html >
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
@@ -12,10 +10,14 @@
 </h:head>
 
 <h:body>
+        <header class="header">
+            <h2>ФИО: Рыжаков Владислав Александрович</h2>
+            <h3>Группа: P3223</h3>
+            <h3>Номер варианта: 3288</h3>
+        </header>
     <div class="main-container">
-
         <div class="graph" id="graphContainer">
-            <canvas id="graphCanvas" width="300" height="300"
+            <canvas id="graphCanvas" width="450" height="450"
                     style="cursor: pointer; border: 1px solid #ccc; background-color: white;">
             </canvas>
         </div>
@@ -24,7 +26,7 @@
             <p:messages id="msgs" autoUpdate="true" closable="true"/>
 
             <div id="xForm">
-                <p:outputLabel for="x" value="Выберите X"/>
+                <p:outputLabel for="x" value="X (-2 ... 2): "/>
                 <p:selectOneMenu id="x" value="#{attemptBean.point.x}">
                     <f:selectItem itemValue="-2.0" itemLabel="-2.0"/>
                     <f:selectItem itemValue="-1.5" itemLabel="-1.5"/>
@@ -39,16 +41,17 @@
             </div>
 
             <div id="yForm">
-                <p:outputLabel for="y" value="Y (-3 ... 3):"/>
-                <p:inputText id="y" value="#{attemptBean.point.y}" placeholder="Введите значение от -3 до 3">
+                <p:outputLabel for="y" value="Y (-3 ... 3): "/>
+                <p:inputText id="y" value="#{attemptBean.point.y}" placeholder="Введите значение от -3 до 3" required="true" >
                     <f:validateDoubleRange minimum="-3.0" maximum="3.0"/>
                 </p:inputText>
             </div>
 
             <div id="rForm">
                 <p:outputLabel for="r" value="R (1 ... 4):"/>
-                <p:spinner id="r" value="#{attemptBean.point.r}" min="1" max="4" stepFactor="0.5" required="true">
+                <p:spinner id="r" value="#{attemptBean.point.r}" min="1" max="4" stepFactor="0.5" required="true" >
                     <p:ajax process="@this" update="@none" oncomplete="redrawGraph()"/>
+                    <f:validateDoubleRange minimum="1.0" maximum="4.0"/>
                 </p:spinner>
             </div>
 
@@ -56,12 +59,30 @@
                              action="#{attemptBean.buildResult()}"
                              update="resultTable msgs pointsData"
                              process="@this x y r"
-                             oncomplete="redrawGraph()"/>
+                             oncomplete="redrawGraph()"
+                            styleClass="ui-button submit-btn"/>
+            <p:button value="Стартовая страница" outcome="index"
+                      styleClass="ui-button go-to-start-btn"
+                      icon="pi pi-home"/>
+            <p:commandButton value="Сбросить результаты"
+                             action="#{storageBean.cleanRes()}"
+                             update="pointsData resultTable msgs"
+                             oncomplete="redrawGraph()"
+                             styleClass="ui-button clear-btn"/>
 
-            <h:inputHidden id="pointsData" value="#{storageBean.jsonResults}"/>
+            <h:outputText id="pointsData"
+                          value="#{storageBean.jsonResults}"
+                          escape="false"
+                          style="display:none;" />
             <h:inputHidden id="hiddenX" value="#{attemptBean.point.x}" />
             <h:inputHidden id="hiddenY" value="#{attemptBean.point.y}" />
-            <h:inputHidden id="hiddenR" value="#{attemptBean.point.r}" />
+            <h:inputHidden id="hiddenR" value="#{attemptBean.point.r}"
+                           required="true"
+                           requiredMessage="Не удалось определить радиус. Пожалуйста, выберите R!"
+                           validatorMessage="Радиус должен быть в диапазоне от 1 до 4">
+                <f:validateDoubleRange minimum="1.0" maximum="4.0"/>
+            </h:inputHidden>
+            <f:validateDoubleRange minimum="1.0" maximum="4.0"/>
 
             <p:remoteCommand name="sendClickParams"
                              action="#{attemptBean.buildResult()}"

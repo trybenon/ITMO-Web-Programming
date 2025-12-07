@@ -38,28 +38,33 @@ public void addResult(Result res){
 
     }
 
-        public String getJsonResults() {
-
-
-
-            StringBuilder sb = new StringBuilder("[");
-
-            for (int i = 0; i < results.size(); i++) {
-                Result r = results.get(i);
-
-
-                sb.append(String.format(java.util.Locale.US,
-                        "{\"x\":%.4f, \"y\":%.4f, \"r\":%.4f, \"success\":%b}",
-                        r.getX(), r.getY(), r.getR(), r.isSuccess()));
-
-
-                if (i < results.size() - 1) {
-                    sb.append(",");
-                }
-            }
-
-            sb.append("]");
-            return sb.toString();
+    public String getJsonResults() {
+        if (results == null || results.isEmpty()) {
+            return "[]";
         }
+
+        StringBuilder sb = new StringBuilder("[");
+
+        for (int i = 0; i < results.size(); i++) {
+            Result r = results.get(i);
+
+            sb.append(String.format(java.util.Locale.US,
+                    "{\"x\":%.4f, \"y\":%.4f, \"r\":%.4f, \"success\":%b}",
+                    r.getX(), r.getY(), r.getR(), r.isSuccess()));
+
+            if (i < results.size() - 1) {
+                sb.append(",");
+            }
+        }
+
+        sb.append("]");
+        return sb.toString();
     }
+
+
+public void cleanRes(){
+        service.cleanAll();
+        results.clear();
+    }
+}
 
