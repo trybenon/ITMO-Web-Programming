@@ -1,8 +1,9 @@
-package model;
+package services;
 
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import dto.Result;
 
 import java.io.Serializable;
 import java.util.List;

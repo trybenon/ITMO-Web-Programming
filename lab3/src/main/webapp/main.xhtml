@@ -14,6 +14,9 @@
             <h2>ФИО: Рыжаков Владислав Александрович</h2>
             <h3>Группа: P3223</h3>
             <h3>Номер варианта: 3288</h3>
+            <div class="header-logo">
+                <img src="resources/images/logo.png" alt="Логотип" />
+            </div>
         </header>
     <div class="main-container">
         <div class="graph" id="graphContainer">
@@ -42,14 +45,17 @@
 
             <div id="yForm">
                 <p:outputLabel for="y" value="Y (-3 ... 3): "/>
-                <p:inputText id="y" value="#{attemptBean.point.y}" placeholder="Введите значение от -3 до 3" required="true" >
+                <p:inputText id="y" value="#{attemptBean.point.y}" placeholder="Введите значение от -3 до 3" required="true"
+                             requiredMessage="Не удалось определить координаты. Пожалуйста, выберите Y!"
+                             validatorMessage="Y должен быть в диапазоне от -3.0 до 3.0">
                     <f:validateDoubleRange minimum="-3.0" maximum="3.0"/>
                 </p:inputText>
             </div>
 
             <div id="rForm">
                 <p:outputLabel for="r" value="R (1 ... 4):"/>
-                <p:spinner id="r" value="#{attemptBean.point.r}" min="1" max="4" stepFactor="0.5" required="true" >
+                <p:spinner id="r" value="#{attemptBean.point.r}" min="1" max="4" stepFactor="0.5" required="true" requiredMessage="Не удалось определить радиус. Пожалуйста, выберите R!"
+                           validatorMessage="Радиус должен быть в диапазоне от 1 до 4">
                     <p:ajax process="@this" update="@none" oncomplete="redrawGraph()"/>
                     <f:validateDoubleRange minimum="1.0" maximum="4.0"/>
                 </p:spinner>
@@ -82,7 +88,8 @@
                            validatorMessage="Радиус должен быть в диапазоне от 1 до 4">
                 <f:validateDoubleRange minimum="1.0" maximum="4.0"/>
             </h:inputHidden>
-            <f:validateDoubleRange minimum="1.0" maximum="4.0"/>
+
+
 
             <p:remoteCommand name="sendClickParams"
                              action="#{attemptBean.buildResult()}"

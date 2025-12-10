@@ -210,10 +210,13 @@ function drawAllPoints(ctx, currentR) {
 
             ctx.beginPath();
             ctx.arc(xPixel, yPixel, 4, 0, 2 * Math.PI);
-
-            ctx.fillStyle = point.success ? "#00ff00" : "#910000";
-            ctx.fill();
-
+            let grayColor = "#404240"
+            if (currentR != point.r){
+                ctx.fillStyle = grayColor;
+            }else {
+                ctx.fillStyle = point.success ? "#00ff00" : "#910000";
+                ctx.fill();
+            }
             ctx.strokeStyle = "black";
             ctx.stroke();
         });

@@ -6,7 +6,7 @@
         version="3.0">
     <managed-bean>
         <managed-bean-name>pointBean</managed-bean-name>
-        <managed-bean-class>model.Point</managed-bean-class>
+        <managed-bean-class>dto.Point</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     <managed-bean>

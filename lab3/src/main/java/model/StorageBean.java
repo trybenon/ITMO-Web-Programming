@@ -1,13 +1,13 @@
 package model;
 
-import com.google.gson.Gson;
-import jakarta.annotation.ManagedBean;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
+import dto.Result;
+import services.StorageService;
 
 import java.io.Serializable;
 import java.util.List;

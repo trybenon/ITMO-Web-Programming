@@ -177,6 +177,39 @@ form:focus-within {
     box-shadow: 0 8px 35px #2e7d3233,
     0 0 0 2px #2e7d324d;
 }
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 400px;
+    font-family: fantasy;
+    color: #1a531b;
+    font-size: 18px;
+    background: #ffffff;
+    padding: 15px 25px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin: 10px;
+}
+
+.header-info h2,
+.header-info h3 {
+    margin: 5px 0;
+}
+
+.header-logo img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /* чтобы не искажалось */
+    border-radius: 10px; /* можешь поменять на 50% если хочешь круг */
+    box-shadow: 0 0 10px rgba(46, 125, 50, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.header-logo img:hover {
+    transform: scale(1.1);
+}
+
 
 
 @media (max-width: 768px) {

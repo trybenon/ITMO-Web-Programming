@@ -113,7 +113,6 @@ function drawNumbers(ctx, radius) {
         ctx.rotate(-ang);
     }
 }
-
 function drawTime(ctx, radius) {
     const now = new Date();
     let hour = now.getHours();

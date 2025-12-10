@@ -5,7 +5,8 @@ import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import dto.Point;
+import dto.Result;
 
 import java.io.Serializable;
 import java.time.ZoneId;
