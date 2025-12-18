@@ -1,6 +1,6 @@
-package servises;
+package lab.lab4.repositories;
 
-import model.Result;
+import lab.lab4.model.Result;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

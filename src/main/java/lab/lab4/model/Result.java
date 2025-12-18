@@ -1,4 +1,4 @@
-package model;
+package lab.lab4.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -27,7 +27,9 @@ public class Result implements Serializable {
     @NonNull
     private boolean success;
     @NonNull
+    @Column(name="attempt_time")
     private ZonedDateTime attemptTime;
     @NonNull
+    @Column(name="exec_time")
     private String execTime;
 }
