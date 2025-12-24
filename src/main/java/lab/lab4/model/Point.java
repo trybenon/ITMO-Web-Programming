@@ -9,18 +9,8 @@ public class Point {
     private double x;
     private double y;
     private double r;
+    private String owner;
 
-    public double getX() {
-        return x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public double getR() {
-        return r;
-    }
 
     public boolean hit() {
         // 1-я четверть - прямоугольник

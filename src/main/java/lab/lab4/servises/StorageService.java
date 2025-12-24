@@ -10,33 +10,30 @@ import org.springframework.stereotype.Service;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.List;
 
 @NoArgsConstructor
 @Service
 public class StorageService {
-
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm");
     @Autowired
     private ResultCrudRepository repository;
 
     @Transactional
-    public List<Result> findAllResults(){
-        return (List<Result>) repository.findAll();
+    public List<Result> findAllResults(String login) {
+        return (List<Result>) repository.findAllByOwner(login);
     }
 
 
     @Transactional
-    public Result saveResult(Point point){
+    public Result saveResult(Point point) {
         long startTime = System.nanoTime();
         boolean success = point.hit();
-        ZonedDateTime attemptTime = ZonedDateTime.now(ZoneId.of("Europe/Moscow"));
-        String execTime = String.valueOf((System.nanoTime() - startTime) / 10000) ;
-        Result newResult = new Result(point.getX(), point.getY(), point.getR(), success, attemptTime, execTime);
+        String attemptTime = formatter.format(ZonedDateTime.now(ZoneId.of("Europe/Moscow")));
+        String execTime = String.valueOf((System.nanoTime() - startTime) / 10000);
+        Result newResult = new Result(point.getX(), point.getY(), point.getR(), success, attemptTime, execTime, point.getOwner());
         return (Result) repository.save(newResult);
-    }
-
-    @Transactional
-    public void cleanAllResults(){
-        repository.deleteAll();
     }
 }

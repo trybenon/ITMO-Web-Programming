@@ -28,8 +28,10 @@ public class Result implements Serializable {
     private boolean success;
     @NonNull
     @Column(name="attempt_time")
-    private ZonedDateTime attemptTime;
+    private String attemptTime;
     @NonNull
     @Column(name="exec_time")
     private String execTime;
+    @NonNull
+    private String owner;
 }
