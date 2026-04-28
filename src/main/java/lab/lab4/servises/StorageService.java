@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.List;
 
 @NoArgsConstructor
 @Service
 public class StorageService {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm");
+
     @Autowired
     private ResultCrudRepository repository;
 
@@ -28,12 +28,12 @@ public class StorageService {
 
 
     @Transactional
-    public Result saveResult(Point point) {
+    public Result saveResult(Point point, String owner) {
         long startTime = System.nanoTime();
         boolean success = point.hit();
         String attemptTime = formatter.format(ZonedDateTime.now(ZoneId.of("Europe/Moscow")));
         String execTime = String.valueOf((System.nanoTime() - startTime) / 10000);
-        Result newResult = new Result(point.getX(), point.getY(), point.getR(), success, attemptTime, execTime, point.getOwner());
+        Result newResult = new Result(point.getX(), point.getY(), point.getR(), success, attemptTime, execTime, owner);
         return (Result) repository.save(newResult);
     }
 }

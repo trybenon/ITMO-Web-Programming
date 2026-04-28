@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import lab.lab4.servises.StorageService;
 
+import java.security.Principal;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:" +
@@ -25,16 +26,14 @@ public class Controller {
         this.storageService = storageService;
     }
 
-    @PostMapping("/allResults")
-    public ResponseEntity<List<Result>> getAllResults(@RequestBody String owner){
-        logger.warn(owner);
-        return ResponseEntity.ok(storageService.findAllResults(owner));
+    @GetMapping("/allResults")
+    public ResponseEntity<List<Result>> getAllResults(Principal principal){
+        return ResponseEntity.ok(storageService.findAllResults(principal.getName()));
     }
 
     @PostMapping("/sendPoint")
-    public Result addResult(@RequestBody Point point){
-
-        return storageService.saveResult(point);
+    public Result addResult(@RequestBody Point point, Principal principal){
+        return storageService.saveResult(point, principal.getName());
     }
 
 }
