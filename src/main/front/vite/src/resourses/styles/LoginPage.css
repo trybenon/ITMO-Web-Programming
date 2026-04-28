@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Roboto:wght@300;400;700&display=swap');
+
+
+
+.new-year-page {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    /* Градиент от темно-синего к светлому */
+    background: radial-gradient(circle at center, #2b32b2 0%, #1488cc 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
+/* Глобальный снег на фоне */
+.snow-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(4px 4px at 10% 10%, #fff 50%, transparent 50%),
+        radial-gradient(6px 6px at 20% 80%, #fff 50%, transparent 50%),
+        radial-gradient(3px 3px at 50% 50%, #fff 50%, transparent 50%),
+        radial-gradient(4px 4px at 80% 20%, #fff 50%, transparent 50%);
+    background-size: 200px 200px;
+    animation: fall 10s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes fall {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 200px; }
+}
+
+/* Хедер */
+.festive-header {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+}
+
+.header-glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); /* Сафари */
+    padding: 15px 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.header-glass h1 {
+    font-size: 1.2rem;
+    margin: 0 0 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header-glass p {
+    font-size: 0.9rem;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* Основной контент*/
+.login-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    flex-grow: 1;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Обертка часов */
+.clock-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* Карточка входа */
+.login-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    width: 340px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: slideIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.card-title {
+    color: white;
+    text-align: center;
+    margin: 0 0 10px;
+    font-family: 'Mountains of Christmas', cursive;
+    font-size: 2rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-group label {
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+.input-group input {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    padding: 12px 15px;
+    border-radius: 25px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+    font-family: 'Roboto', sans-serif;
+}
+
+.input-group input:focus {
+    background: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.festive-button {
+    background: linear-gradient(45deg, #d31027, #ea384d);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    font-family: 'Roboto', sans-serif;
+}
+
+.festive-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(211, 16, 39, 0.4);
+}
+
+.festive-button:active {
+    transform: translateY(0);
+}
+
+/* Footer с Мандаринами */
+.mandarin-footer {
+    width: 100%;
+    height: 120px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.mandarins-pile {
+    position: relative;
+    width: 400px;
+    height: 100px;
+    text-align: center;
+    /* Плавное изменение размера кучи */
+    transition: transform 0.3s ease;
+}
+
+.mandarin {
+    font-size: 3.5rem;
+    position: absolute;
+    bottom: 0;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.5));
+    transition: transform 0.3s;
+    user-select: none;
+}
+
+.mandarin:hover {
+    transform: scale(1.1) rotate(10deg);
+    cursor: pointer;
+}
+
+/* Позиционирование мандаринов */
+.mandarin:nth-child(1) { left: 20%; bottom: -10px; z-index: 1; }
+.mandarin:nth-child(2) { left: 35%; bottom: -10px; z-index: 1; }
+.mandarin:nth-child(3) { left: 50%; bottom: -10px; z-index: 1; }
+.mandarin:nth-child(4) { left: 65%; bottom: -10px; z-index: 1; }
+
+.mandarin:nth-child(5) { left: 27%; bottom: 30px; z-index: 2; }
+.mandarin:nth-child(6) { left: 42%; bottom: 30px; z-index: 2; }
+.mandarin:nth-child(7) { left: 57%; bottom: 30px; z-index: 2; }
+
+.mandarin:nth-child(8) { left: 35%; bottom: 65px; z-index: 3; }
+.mandarin:nth-child(9) { left: 50%; bottom: 65px; z-index: 3; }
+
+.mandarin:nth-child(10) { left: 42%; bottom: 95px; z-index: 4; }
+
+/* Ссылка на регистрацию */
+.register-link {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #e0e0e0; /* Светло-серый текст вопроса */
+}
+
+.register-link a {
+    color: #fff; /* Белая ссылка */
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.5); /* Пунктирное подчеркивание */
+    transition: all 0.3s;
+    margin-left: 5px;
+}
+
+.register-link a:hover {
+    color: #ffe0b2; /* Легкий мандариновый оттенок при наведении */
+    border-bottom-style: solid; /* Подчеркивание становится сплошным */
+    text-shadow: 0 0 5px rgba(255, 224, 178, 0.5);
+}
+
+
+/* --- АДАПТИВНОСТЬ --- */
+
+/* 1. ПЛАНШЕТНЫЙ РЕЖИМ (893px <= width < 1104px) */
+@media (max-width: 1103px) {
+    .login-content {
+        flex-direction: column;
+        gap: 50px;
+    }
+    .login-card {
+        animation: none;
+    }
+}
+
+/* 2. МОБИЛЬНЫЙ РЕЖИМ (width < 893px) */
+@media (max-width: 892px) {
+
+    .login-content {
+        gap: 30px;
+        padding: 10px;
+    }
+
+    /* Уменьшаем часы */
+    .clock-canvas {
+        width: 300px !important;
+        height: 300px !important;
+    }
+
+    .login-card {
+        width: 300px; /* Карточка чуть уже */
+        padding: 25px;
+    }
+
+    .card-title {
+        font-size: 1.6rem;
+    }
+
+    /* Уменьшаем горку мандаринов */
+    .mandarins-pile {
+        transform: scale(0.65);
+        transform-origin: bottom center;
+        bottom: -10px;
+    }
+
+    .festive-header .header-glass {
+        padding: 10px 15px;
+    }
+
+    .festive-header h1 {
+        font-size: 1rem;
+    }
+}
